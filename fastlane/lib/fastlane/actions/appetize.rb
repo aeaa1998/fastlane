@@ -22,6 +22,10 @@ module Fastlane
           platform: options[:platform]
         }
 
+        if options[:platform] == 'android'
+          params[:fileType] = 'apk'
+        end
+
         if options[:path]
           params[:file] = UploadIO.new(options[:path], 'application/zip')
         else
