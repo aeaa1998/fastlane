@@ -22,7 +22,9 @@ module Fastlane
           platform: options[:platform]
         }
 
-        if options[:platform] == 'android'
+        if options[:fileType]
+          params[:fileType] = options[:fileType]
+        elsif options[:platform] == 'android'
           params[:fileType] = 'apk'
         end
 
