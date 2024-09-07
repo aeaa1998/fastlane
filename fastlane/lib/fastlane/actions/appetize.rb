@@ -22,10 +22,8 @@ module Fastlane
           platform: options[:platform]
         }
 
-        if options[:fileType]
-          params[:fileType] = options[:fileType]
-        elsif options[:platform] == 'android'
-          params[:fileType] = 'apk'
+        if options[:file_type]
+          params[:fileType] = options[:file_type]
         end
 
         if options[:path]
@@ -138,6 +136,10 @@ module Fastlane
                                        env_name: "APPETIZE_PLATFORM",
                                        description: "Platform. Either `ios` or `android`",
                                        default_value: 'ios'),
+          FastlaneCore::ConfigItem.new(key: :file_type,
+                                       env_name: "APPETIZE_FILE_TYPE",
+                                       description: "The application file type. ios: tar.gz, zip. android: apk",
+                                       optional: true),
           FastlaneCore::ConfigItem.new(key: :path,
                                        env_name: "APPETIZE_FILE_PATH",
                                        description: "Path to zipped build on the local filesystem. Either this or `url` must be specified",
